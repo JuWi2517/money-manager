@@ -1,0 +1,59 @@
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: #fff;
+}
+
+.component-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+input, select, button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+button {
+    background-color: #06d6a0;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #048c7f;
+    transform: translateY(-2px);
+}
+
+h2, h3 {
+    text-align: center;
+    font-weight: 600;
+}
+
+.label {
+    margin-top: 20px;
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .component-container {
+        margin: 10px;
+        padding: 15px;
+    }
+}

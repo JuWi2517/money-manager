@@ -1,0 +1,39 @@
+
+.transaction-table {
+    overflow-x: auto;
+    color: white;
+}
+
+.transaction-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.transaction-table th, .transaction-table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+
+}
+option{
+    color: black;
+}
+.transaction-table th {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.transaction-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.filter-select {
+    margin-left: 10px;
+    min-width: 120px; /* Ensure select elements have enough width */
+}

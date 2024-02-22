@@ -1,5 +1,5 @@
 import HomePage from "./HomePage";
-import './App.css';
+import './GlobalStyle.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {

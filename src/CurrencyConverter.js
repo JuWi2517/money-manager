@@ -1,10 +1,10 @@
-// CurrencyConverter.js
 import React, { useState } from 'react';
+import './CurrencyConverter.css';
 
 function CurrencyConverter({ apiKey }) {
     const [amount, setAmount] = useState('');
     const [convertedAmount, setConvertedAmount] = useState('');
-    const [currency, setCurrency] = useState('USD');
+    const [currency, setCurrency] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     const handleConvert = async () => {
@@ -17,43 +17,44 @@ function CurrencyConverter({ apiKey }) {
             if (data.result === 'success') {
                 const rate = data.conversion_rates[currency];
                 const result = (amount * rate).toFixed(2);
-                setConvertedAmount(`${result} ${currency}`);
+                setConvertedAmount(`${result} `);
             } else {
                 throw new Error('API request failed');
             }
         } catch (error) {
             console.error("Error fetching currency data:", error);
-            setConvertedAmount("Conversion Error");
+            setConvertedAmount("Chyba při konverzi");
+        } finally {
+            setIsLoading(false);
         }
-
-        setIsLoading(false);
     };
 
     return (
-        <div>
+        <div className="component-container currency-converter">
+            <h2>Převodník měny</h2>
             <input
                 type="number"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                placeholder="Amount in CZK"
+                placeholder="Částka v CZK"
             />
             <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
-
-                <option value="USD">USD - US Dollar</option>
+                <option>Vyberte měnu</option>
+                <option value="USD">USD - Americký dolar</option>
                 <option value="EUR">EUR - Euro</option>
-                <option value="GBP">GBP - British Pound</option>
-                <option value="JPY">JPY - Japanese Yen</option>
-                <option value="CAD">CAD - Canadian Dollar</option>
-                <option value="AUD">AUD - Australian Dollar</option>
-                <option value="CHF">CHF - Swiss Franc</option>
-                <option value="CNY">CNY - Chinese Yuan</option>
-                <option value="SEK">SEK - Swedish Krona</option>
-                <option value="NZD">NZD - New Zealand Dollar</option>
+                <option value="GBP">GBP - Britská libra</option>
+                <option value="JPY">JPY - Japonský jen</option>
+                <option value="CAD">CAD - Kanadský dolar</option>
+                <option value="AUD">AUD - Australský dolar</option>
+                <option value="CHF">CHF - Švýcarský frank</option>
+                <option value="CNY">CNY - Čínský jüan</option>
+                <option value="SEK">SEK - Švédská koruna</option>
+                <option value="NZD">NZD - Novozélandský dolar</option>
             </select>
             <button onClick={handleConvert} disabled={isLoading || !amount}>
-                Convert
+                Převést
             </button>
-            <p>{isLoading ? "Loading..." : convertedAmount}</p>
+            <p>{isLoading ? "Načítání..." : `${convertedAmount} ${currency}`}</p>
         </div>
     );
 }

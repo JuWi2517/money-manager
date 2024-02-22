@@ -1,37 +1,36 @@
-// VatCalculator.js
 import React, { useState } from 'react';
+import './VatCalculator.css';
 
 function VatCalculator() {
     const [priceExclVat, setPriceExclVat] = useState('');
-    const [vatRate, setVatRate] = useState(21); // Default VAT rate, can be adjusted
+    const [vatRate, setVatRate] = useState(21); // Default VAT rate
     const [totalPrice, setTotalPrice] = useState('');
     const [vatAmount, setVatAmount] = useState('');
 
     const calculateVat = () => {
-        const vatDecimal = vatRate / 100;
-        const calculatedVatAmount = priceExclVat * vatDecimal;
-        const calculatedTotalPrice = parseFloat(priceExclVat) + calculatedVatAmount;
+        const price = parseFloat(priceExclVat);
+        const rate = vatRate / 100;
+        const vat = price * rate;
+        const total = price + vat;
 
-        setVatAmount(calculatedVatAmount.toFixed(2));
-        setTotalPrice(calculatedTotalPrice.toFixed(2));
+        setVatAmount(vat.toFixed(2));
+        setTotalPrice(total.toFixed(2));
     };
 
     return (
-        <div>
+        <div className="component-container vat-calculator">
             <h3>Výpočet DPH</h3>
-            <label>Cena bez DPH:</label>
             <input
                 type="number"
                 value={priceExclVat}
                 onChange={(e) => setPriceExclVat(e.target.value)}
-                placeholder="Zadejte cenu bez DPH"
+                placeholder="Cena bez DPH"
             />
-            <label>Sazba DPH:</label>
             <select value={vatRate} onChange={(e) => setVatRate(e.target.value)}>
                 <option value="21">21%</option>
                 <option value="15">15%</option>
+                <option value="12">12%</option>
                 <option value="10">10%</option>
-                {/* Add more VAT rates as needed */}
             </select>
             <button onClick={calculateVat}>Spočítat</button>
             <p>Celková cena s DPH: {totalPrice} Kč</p>

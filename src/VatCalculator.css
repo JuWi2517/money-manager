@@ -1,0 +1,11 @@
+
+.vat-calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+input::placeholder{
+    color: white;
+}

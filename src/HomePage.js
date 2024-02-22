@@ -55,8 +55,8 @@ function HomePage() {
             <CurrencyConverter apiKey="81dc48b24950dc54d035cc7a" />
             <FutureValueCalculator />
             <VatCalculator />
-            <button onClick={toggleModal}>Sign In</button>
-            {isSignInModalOpen && <SignInModal closeModal={toggleModal} />}>
+            <button onClick={toggleModal}>Příhlášení</button>
+            {isSignInModalOpen && <SignInModal closeModal={toggleModal} />}
         </div>
     );
 }

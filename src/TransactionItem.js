@@ -1,4 +1,4 @@
-// TransactionItem.js
+
 function TransactionItem({ transaction }) {
     return (
         <li>
